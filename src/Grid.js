@@ -69,33 +69,61 @@ export default class Grid {
 
     this.cells = newCells;
   }
-  
+
   /**
-   * Returns the neighboring cells of a particular x, y coordinate pair
-   * @param {int} x 
-   * @param {int} y 
+   * Returns the neighboring cells of a cell. Cell positions are described by referring to a number on the grid
+   * below. Where 5 is the current working cell.
+   *
+   * 7|8|9
+   * - - -
+   * 4|5|6
+   * - - -
+   * 1|2|3
+   *
+   * @param {Cell} cell
    */
-  getCellNeighbors (x, y) {
+  getCellNeighbors (cell) {
     let neighbors = [];
-    
+    let x = cell.x;
+    let y = cell.y;
+
     if (y - 1 >= 0) {
+      // Position 7
       if (x - 1 >= 0) {
-        neighbors.push(this.cells[y - 1][x-1]);
+        neighbors.push(this.cells[y - 1][x - 1]);
       }
-      if (x + 1 <= this.width) {
-        neighbors.push(this.cells[y - 1][x-1]);
-      }
+
+      // Position 8
       neighbors.push(this.cells[y - 1][x]);
+
+      // Position 9
+      if (x + 1 < this.width) {
+        neighbors.push(this.cells[y - 1][x + 1]);
+      }
     }
 
-    if (y + 1 <= this.length) {
+    if (y + 1 < this.length) {
+      // Position 1
       if (x - 1 >= 0) {
         neighbors.push(this.cells[y + 1][x - 1]);
       }
-      if (x + 1 <= this.width) {
-        neighbors.push(this.cells[y + 1][x - 1]);
-      }
+
+      // Position 2
       neighbors.push(this.cells[y + 1][x]);
+
+      // Position 3
+      if (x + 1 < this.width) {
+        neighbors.push(this.cells[y + 1][x + 1]);
+      }
+    }
+
+    // Position 4
+    if (x - 1 >= 0) {
+      neighbors.push(this.cells[y][x - 1]);
+    }
+    // Position 6
+    if (x + 1 < this.width) {
+      neighbors.push(this.cells[y][x + 1]);
     }
 
     return neighbors;
