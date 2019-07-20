@@ -32,31 +32,30 @@ export default class Grid {
 
     this.cells = cells;
   }
-  
+
   /**
   * Goes through the grid and updates the state of each cell.
   */
   update () {
     let newCells = [];
-    let oldCells = this.cell;
-    console.log(this.cell);
+    let oldCells = this.cells;
 
     oldCells.forEach( (cellRow) => {
       let newRow = [];
       cellRow.forEach( (cell) => {
         let neighbors = this.getCellNeighbors(cell);
 
-        neighbors.filter( (cell) => {
+        let liveNeighbors = neighbors.filter( (cell) => {
           return cell.isAlive();
         });
 
-        let neighborCount = neighbors.count();
+        let neighborCount = liveNeighbors.length;
         if (cell.isAlive() && neighborCount > 3) {
           cell.die();
-        } 
+        }
         else if (cell.isAlive() && neighborCount < 2) {
           cell.die();
-        } 
+        }
         else if (!cell.isAlive() && neighborCount === 3) {
           cell.live();
         }
