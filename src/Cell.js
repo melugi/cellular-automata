@@ -1,6 +1,8 @@
 export default class Cell {
-  constructor(state) {
+  constructor(state, x, y) {
     this.state = state;
+    this.x = x;
+    this.y = y;
   }
   
   die () {
