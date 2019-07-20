@@ -1,18 +1,18 @@
 import Cell from "./Cell";
 
 export default class Grid {
-  
+
   /**
-  * @param {int} x
-  * @param {int} y
+  * @param {int} width
+  * @param {int} length
   */
-  constructor (x, y) {
-    this.width = x;
-    this.length = y;
+  constructor (width, length) {
+    this.width = width;
+    this.length = length;
     this.cells = [];
     this.initializeGrid();
   }
-  
+
   /**
   * Initializes the grid as a two dimensional array of cells with an initial
   * state that's randomly generated.
