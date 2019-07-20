@@ -19,17 +19,17 @@ export default class Grid {
   */
   initializeGrid () {
     let cells = [];
-    
-    for (let y = 1; y <= this.length; y++) {
+
+    for (let y = 0; y < this.length; y++) {
       let cellRow = [];
-      for (let x = 1; x <= this.width; x++) {
+      for (let x = 0; x < this.width; x++) {
         let isCellAlive = (Math.random() <= 0.5);
-        let cell = new Cell(isCellAlive);
+        let cell = new Cell(isCellAlive, x, y);
         cellRow.push(cell);
       }
       cells.push(cellRow);
     }
-    
+
     this.cells = cells;
   }
   
