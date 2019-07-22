@@ -10,7 +10,6 @@ export default class Grid {
     this.width = width;
     this.length = length;
     this.cells = [];
-    this.initializeGrid();
   }
 
   /**
