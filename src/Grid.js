@@ -22,11 +22,14 @@ export default class Grid {
 
     for (let y = 0; y < this.length; y++) {
       let cellRow = [];
+
       for (let x = 0; x < this.width; x++) {
         let isCellAlive = (Math.random() <= 0.5);
         let cell = new Cell(isCellAlive, x, y);
+
         cellRow.push(cell);
       }
+
       cells.push(cellRow);
     }
 
@@ -40,12 +43,12 @@ export default class Grid {
     let newCells = [];
     let oldCells = this.cells;
 
-    oldCells.forEach( (cellRow) => {
+    oldCells.forEach( cellRow => {
       let newRow = [];
-      cellRow.forEach( (cell) => {
+      cellRow.forEach( cell => {
         let neighbors = this.getCellNeighbors(cell);
 
-        let liveNeighbors = neighbors.filter( (cell) => {
+        let liveNeighbors = neighbors.filter( cell => {
           return cell.isAlive();
         });
 
@@ -131,6 +134,7 @@ export default class Grid {
   render () {
     this.cells.forEach( cellRow => {
       let stringRow = '';
+
       cellRow.forEach( cell => {
         if (cell.isAlive()) {
           stringRow += '#';
@@ -138,6 +142,7 @@ export default class Grid {
           stringRow += ' ';
         }
       });
+
       console.log(stringRow + '\n');
     });
   }
