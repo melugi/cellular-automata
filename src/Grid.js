@@ -12,7 +12,7 @@ export default class Grid {
     this.cells = [];
   }
 
-  getGrid() {
+  toArray() {
     return this.cells;
   }
 
