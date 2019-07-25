@@ -12,6 +12,10 @@ export default class Grid {
     this.cells = [];
   }
 
+  getGrid() {
+    return this.cells;
+  }
+
   /**
   * Initializes the grid as a two dimensional array of cells with an initial
   * state that's randomly generated.
@@ -128,21 +132,5 @@ export default class Grid {
     }
 
     return neighbors;
-  }
-
-  render () {
-    this.cells.forEach( cellRow => {
-      let stringRow = '';
-
-      cellRow.forEach( cell => {
-        if (cell.isAlive()) {
-          stringRow += '#';
-        } else {
-          stringRow += ' ';
-        }
-      });
-
-      console.log(stringRow + '\n');
-    });
   }
 }
