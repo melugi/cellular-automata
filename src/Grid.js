@@ -133,4 +133,8 @@ export default class Grid {
 
     return neighbors;
   }
+
+  stringify () {
+    return JSON.stringify(this.cells);
+  }
 }
