@@ -6,16 +6,17 @@ const app = Express();
 var grid;
 
 app.use('/public', Express.static(path.join(__dirname, '../public')));
+app.use('/jquery', Express.static(path.join(__dirname, '../node_modules/jquery/dist')));
 
 app.get('/', function (request, response) {
   response.sendFile(path.join(__dirname, '../views/index.html'));
 });
 
 app.get('/grid', function (request, response) {
-  grid = new Grid(200, 200);
+  grid = new Grid(20, 20);
   grid.initializeGrid();
 
-  response.json(grid.htmlify());
+  response.send(grid.htmlify());
 });
 
 app.put('/grid', function (request, response) {
