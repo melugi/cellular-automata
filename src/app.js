@@ -13,18 +13,14 @@ app.get('/', function (request, response) {
 });
 
 app.get('/grid', function (request, response) {
-  grid = new Grid(20, 20);
-  grid.initializeGrid();
-
-  response.send(grid.htmlify());
-});
-
-app.put('/grid', function (request, response) {
   if (typeof grid !== 'undefined') {
     grid.update();
   } else {
-    throw new Error('Grid is not initialized');
+    grid = new Grid(20, 20);
+    grid.initializeGrid();
   }
+
+  response.send(grid.htmlify());
 });
 
 app.listen(3001, console.log("Listening on port 3001."));
