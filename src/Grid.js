@@ -137,4 +137,18 @@ export default class Grid {
   stringify () {
     return JSON.stringify(this.cells);
   }
+
+  htmlify () {
+    let html = '';
+    let grid = this.cells;
+
+    grid.forEach( gridRow => {
+      gridRow.forEach( cell => {
+        let cellState = cell.isAlive() ? 'alive' : 'dead';
+        html += `<div class="${cellState}"></div>`;
+      });
+    });
+
+    return html;
+  }
 }
