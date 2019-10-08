@@ -1,0 +1,26 @@
+body {
+    height: 400px;
+    width: 400px;
+}
+
+#grid {
+    height: 100%;
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(10, 10fr);
+}
+
+div div {
+    grid-auto-rows: 1fr;
+    width: auto;
+    border: 1px solid;
+}
+
+.alive {
+    background-color: black;
+}
+
+.dead {
+    background-color: white;
+}
+
