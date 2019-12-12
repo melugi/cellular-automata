@@ -3,10 +3,23 @@ function getGrid() {
     let $grid = $('#grid');
     $grid.empty();
     $grid.append(data);
-    getGrid();
   });
 }
 
+function stepForward() {
+  $.get('/grid/step', function (data) {
+    let $grid = $('#grid');
+    $grid.empty();
+    $grid.append(data);
+  });
+}
+
+// TODO: Implement stepBackward once game state being saved is done.
+function stepBackward() {
+
+}
+
 $(document).ready(function () {
+  $("#stepForwardBtn").click(stepForward);
   getGrid();
 })

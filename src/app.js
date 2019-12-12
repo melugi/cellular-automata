@@ -13,13 +13,14 @@ app.get('/', function (request, response) {
 });
 
 app.get('/grid', function (request, response) {
-  if (typeof grid !== 'undefined') {
-    grid.update();
-  } else {
-    grid = new Grid(20, 20);
-    grid.initializeGrid();
-  }
+  grid = new Grid(10, 10);
+  grid.initializeGrid();
 
+  response.send(grid.htmlify());
+});
+
+app.get('/grid/step', function (request, response) {
+  grid.update();
   response.send(grid.htmlify());
 });
 
