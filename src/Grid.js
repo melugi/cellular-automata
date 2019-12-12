@@ -12,6 +12,14 @@ export default class Grid {
     this.cells = [];
   }
 
+  mapToStateArray() {
+    return this.cells.map( (cellRow) => {
+      return cellRow.map( (cell) => {
+        return cell.isAlive();
+      });
+    });
+  }
+
   toArray() {
     return this.cells;
   }
@@ -145,7 +153,7 @@ export default class Grid {
     grid.forEach( gridRow => {
       gridRow.forEach( cell => {
         let cellState = cell.isAlive() ? 'alive' : 'dead';
-        html += `<div class="${cellState} square-grid__cell square-grid__cell--${gridRow.length}"></div>`;
+        html += `<div class='${cellState} square-grid__cell square-grid__cell--${gridRow.length}'></div>`;
       });
     });
 

@@ -7,9 +7,14 @@ function getGrid() {
 }
 
 function updateGrid(data) {
+  if (data.stable) {
+    playing = false;
+    return;
+  }
+
   let $grid = $('#grid');
   $grid.empty();
-  $grid.append(data);
+  $grid.append(data.grid);
 
   if (playing) {
     stepForward();

@@ -16,12 +16,22 @@ app.get('/grid', function (request, response) {
   grid = new Grid(10, 10);
   grid.initializeGrid();
 
-  response.send(grid.htmlify());
+  response.json({
+    'grid': grid.htmlify(),
+    'stable': false
+  });
 });
 
 app.get('/grid/step', function (request, response) {
+  let oldGrid = grid.mapToStateArray();
   grid.update();
-  response.send(grid.htmlify());
+
+  let stable = JSON.stringify(grid.mapToStateArray()) === JSON.stringify(oldGrid);
+
+  response.json({
+    'grid': grid.htmlify(),
+    'stable': stable
+  });
 });
 
 app.listen(3001, console.log("Listening on port 3001."));
