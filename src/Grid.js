@@ -20,10 +20,6 @@ export default class Grid {
     });
   }
 
-  toArray() {
-    return this.cells;
-  }
-
   /**
   * Initializes the grid as a two dimensional array of cells with an initial
   * state that's randomly generated.
@@ -140,10 +136,6 @@ export default class Grid {
     }
 
     return neighbors;
-  }
-
-  stringify () {
-    return JSON.stringify(this.cells);
   }
 
   htmlify () {
