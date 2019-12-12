@@ -42,8 +42,14 @@ function stepBackward() {
 
 }
 
+function reset () {
+  $('#grid').empty();
+  getGrid();
+}
+
 $(document).ready(function () {
   $("#stepForwardBtn").click(stepForward);
   $("#playBtn").click(play);
+  $("#resetBtn").click(reset);
   getGrid();
 })
