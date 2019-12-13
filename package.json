@@ -15,7 +15,10 @@
   },
   "scripts": {
     "test": "jest",
-    "build": "babel src -d dist"
+    "build": "babel src -d dist",
+    "predeploy": "echo 'Placeholder for Linter'",
+    "deploy": "jest",
+    "postdeploy": "babel src -d dist"
   },
   "dependencies": {
     "express": "^4.17.1",
