@@ -10,7 +10,8 @@
     "@babel/core": "^7.6.2",
     "@babel/node": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
-    "eslint": "^5.16.0"
+    "eslint": "^5.16.0",
+    "jest": "^24.9.0"
   },
   "scripts": {
     "build": "babel src -d dist"
