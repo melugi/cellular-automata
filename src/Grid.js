@@ -75,17 +75,19 @@ export default class Grid {
         });
 
         let neighborCount = liveNeighbors.length;
+        let newCell = Object.assign(Object.create(Object.getPrototypeOf(cell)), cell);
+
         if (cell.isAlive() && neighborCount > 3) {
-          cell.die();
+          newCell.die();
         }
         else if (cell.isAlive() && neighborCount < 2) {
-          cell.die();
+          newCell.die();
         }
-        else if (!cell.isAlive() && neighborCount === 3) {
-          cell.live();
+        else if (!cell.isAlive && neighborCount == 3) {
+          newCell.live();
         }
 
-        newRow.push(cell);
+        newRow.push(newCell);
       });
 
       newCells.push(newRow);
@@ -126,6 +128,15 @@ export default class Grid {
       }
     }
 
+    // Position 4
+    if (x - 1 >= 0) {
+      neighbors.push(this.cells[y][x - 1]);
+    }
+    // Position 6
+    if (x + 1 < this.width) {
+      neighbors.push(this.cells[y][x + 1]);
+    }
+
     if (y + 1 < this.length) {
       // Position 1
       if (x - 1 >= 0) {
@@ -139,15 +150,6 @@ export default class Grid {
       if (x + 1 < this.width) {
         neighbors.push(this.cells[y + 1][x + 1]);
       }
-    }
-
-    // Position 4
-    if (x - 1 >= 0) {
-      neighbors.push(this.cells[y][x - 1]);
-    }
-    // Position 6
-    if (x + 1 < this.width) {
-      neighbors.push(this.cells[y][x + 1]);
     }
 
     return neighbors;
