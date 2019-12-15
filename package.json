@@ -5,6 +5,13 @@
   "main": "dist/app.js",
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "test": "jest",
+    "build": "babel src -d dist",
+    "predeploy": "echo 'Placeholder for Linter'",
+    "deploy": "jest",
+    "postdeploy": "babel src -d dist"
+  },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
@@ -13,13 +20,6 @@
     "@babel/preset-env": "^7.6.2",
     "eslint": "^5.16.0",
     "jest": "^24.9.0"
-  },
-  "scripts": {
-    "test": "jest",
-    "build": "babel src -d dist",
-    "predeploy": "echo 'Placeholder for Linter'",
-    "deploy": "jest",
-    "postdeploy": "babel src -d dist"
   },
   "dependencies": {
     "express": "^4.17.1",
