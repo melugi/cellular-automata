@@ -10,6 +10,16 @@ const testData = {
   ]
 };
 
+const updatedTestData = {
+  length: 3,
+  width: 3,
+  grid: [
+    [false, true, false],
+    [false, true, false],
+    [false, false, false]
+  ]
+}
+
 test('Grid Initilization', () => {
   let grid1 = new Grid(testData.length, testData.width);
   grid1.initializeGrid(testData.grid);
@@ -25,4 +35,12 @@ test('Grid Equality', () => {
 
   expect(grid1.mapToStateArray()).toEqual(grid2.mapToStateArray());
   expect(JSON.stringify(grid1.mapToStateArray())).toEqual(JSON.stringify(grid2.mapToStateArray()));
+});
+
+test('Grid Updates', () => {
+  let grid1 = new Grid(testData.length, testData.width);
+  grid1.initializeGrid(testData.grid);
+  grid1.update();
+
+  expect(grid1.mapToStateArray()).toEqual(updatedTestData.grid);
 });

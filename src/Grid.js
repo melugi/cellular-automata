@@ -77,13 +77,13 @@ export default class Grid {
         let neighborCount = liveNeighbors.length;
         let newCell = Object.assign(Object.create(Object.getPrototypeOf(cell)), cell);
 
-        if (cell.isAlive() && neighborCount > 3) {
+        if (newCell.isAlive() && neighborCount > 3) {
           newCell.die();
         }
-        else if (cell.isAlive() && neighborCount < 2) {
+        else if (newCell.isAlive() && neighborCount < 2) {
           newCell.die();
         }
-        else if (!cell.isAlive && neighborCount == 3) {
+        else if (!newCell.isAlive() && neighborCount == 3) {
           newCell.live();
         }
 
