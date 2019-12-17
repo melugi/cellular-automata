@@ -1,6 +1,8 @@
 import SyncConwayAutomata from "./SyncConwayAutomata";
 
 export default class AutomataManager {
+  automata: SyncConwayAutomata;
+  history: SyncConwayAutomata[];
 
   initializeSyncConwayAutomata (x, y, initialState) {
     this.automata = new SyncConwayAutomata(x, y);
@@ -24,14 +26,14 @@ export default class AutomataManager {
     this.automata = this.history.pop();
   }
 
-  isStable () {
-    previousGrid = this.history.pop();
+  isStable (): boolean {
+    let previousGrid = this.history.pop();
     let isStable = JSON.stringify(this.automata.mapToStateArray()) === JSON.stringify(previousGrid.mapToStateArray())
 
     return isStable;
   }
 
-  toHtml () {
+  toHtml (): string {
     return this.automata.toHtml();
   }
 }
