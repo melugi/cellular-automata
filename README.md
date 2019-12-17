@@ -13,7 +13,7 @@ Teepole@thinkpadX220:~$ npm -v
 6.10.1
 ```
 
-I can't guarantee it'll work on earlier versions, but as long as they support Babel it should be fine.
+I can't guarantee it'll work on earlier versions, but as long as they support Webpack it should be fine.
 
 ### Installing
 
@@ -24,6 +24,4 @@ Clone the project and then run `npm install`. Once the dependencies are installe
 
 * [Game of Life Wiki](http://www.conwaylife.com/wiki/Main_Page)
 * [A Guided Tour of Asynchronous Cellular Automata](https://arxiv.org/abs/1406.0792)
-
-Some reading for later. The next step for this project would be to get some kind of pattern generation working, or an implementation which is asynchronous. Alternatively the display method is really bare bones, so maybe my first priority should be to update that past several `console.log` calls.
 
