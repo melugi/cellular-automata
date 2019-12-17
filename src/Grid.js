@@ -61,7 +61,7 @@ export default class Grid {
   /**
   * Goes through the grid and updates the state of each cell.
   */
-  update () {
+  evolve () {
     let newCells = [];
     let oldCells = this.cells;
 

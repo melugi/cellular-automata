@@ -40,7 +40,7 @@ test('Grid Equality', () => {
 test('Grid Updates', () => {
   let grid1 = new Grid(testData.length, testData.width);
   grid1.initializeGrid(testData.grid);
-  grid1.update();
+  grid1.evolve();
 
   expect(grid1.mapToStateArray()).toEqual(updatedTestData.grid);
 });

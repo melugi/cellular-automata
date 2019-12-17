@@ -24,7 +24,7 @@ app.get('/grid', function (request, response) {
 
 app.get('/grid/step', function (request, response) {
   let oldGrid = grid.mapToStateArray();
-  grid.update();
+  grid.evolve();
 
   let stable = JSON.stringify(grid.mapToStateArray()) === JSON.stringify(oldGrid);
 
