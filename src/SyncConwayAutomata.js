@@ -1,6 +1,6 @@
 import Cell from "./Cell";
 
-export default class Grid {
+export default class SyncConwayAutomata {
 
   /**
   * @param {int} width
@@ -23,6 +23,8 @@ export default class Grid {
   /**
   * Initializes the grid as a two dimensional array of cells with an initial
   * state that's randomly generated.
+  *
+  * @param {Array} initialState
   */
   initializeGrid (initialState) {
     if (initialState) {
