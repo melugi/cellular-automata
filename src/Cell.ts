@@ -1,19 +1,23 @@
 export default class Cell {
-  constructor(state, x, y) {
+  state: boolean;
+  x: number;
+  y: number;
+
+  constructor(state: boolean, x: number, y: number) {
     this.state = state;
     this.x = x;
     this.y = y;
   }
-  
+
   die () {
     this.state = false;
   }
-  
+
   live () {
     this.state = true;
   }
 
-  isAlive () {
+  isAlive (): boolean {
     return this.state;
   }
 }

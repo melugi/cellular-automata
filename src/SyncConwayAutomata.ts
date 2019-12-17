@@ -1,6 +1,9 @@
 import Cell from "./Cell";
 
 export default class SyncConwayAutomata {
+  width: number;
+  length: number;
+  cells: Cell[][];
 
   /**
   * @param {int} width
@@ -12,7 +15,7 @@ export default class SyncConwayAutomata {
     this.cells = [];
   }
 
-  mapToStateArray() {
+  mapToStateArray(): boolean[][] {
     return this.cells.map( (cellRow) => {
       return cellRow.map( (cell) => {
         return cell.isAlive();
@@ -110,7 +113,7 @@ export default class SyncConwayAutomata {
    *
    * @param {Cell} cell
    */
-  getCellNeighbors (cell) {
+  getCellNeighbors (cell): Cell[] {
     let neighbors = [];
     let x = cell.x;
     let y = cell.y;
@@ -157,7 +160,7 @@ export default class SyncConwayAutomata {
     return neighbors;
   }
 
-  toHtml () {
+  toHtml (): string {
     let html = '';
     let grid = this.cells;
 
