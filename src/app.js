@@ -1,4 +1,4 @@
-import Grid from "./Grid";
+import SyncConwayAutomata from "./SyncConwayAutomata";
 import Express from 'express';
 import * as path from 'path';
 
@@ -13,7 +13,7 @@ app.get('/', function (request, response) {
 });
 
 app.get('/grid', function (request, response) {
-  grid = new Grid(10, 10);
+  grid = new SyncConwayAutomata(10, 10);
   grid.initializeGrid();
 
   response.json({

@@ -1,4 +1,4 @@
-import Grid from '../src/Grid';
+import SyncConwayAutomata from '../src/SyncConwayAutomata';
 
 const testData = {
   length: 3,
@@ -21,15 +21,15 @@ const updatedTestData = {
 }
 
 test('Grid Initilization', () => {
-  let grid1 = new Grid(testData.length, testData.width);
+  let grid1 = new SyncConwayAutomata(testData.length, testData.width);
   grid1.initializeGrid(testData.grid);
 
   expect(grid1.mapToStateArray()).toEqual(testData.grid);
 });
 
 test('Grid Equality', () => {
-  let grid1 = new Grid(testData.length, testData.width);
-  let grid2 = new Grid(testData.length, testData.width);
+  let grid1 = new SyncConwayAutomata(testData.length, testData.width);
+  let grid2 = new SyncConwayAutomata(testData.length, testData.width);
   grid1.initializeGrid(testData.grid);
   grid2.initializeGrid(testData.grid);
 
@@ -38,7 +38,7 @@ test('Grid Equality', () => {
 });
 
 test('Grid Updates', () => {
-  let grid1 = new Grid(testData.length, testData.width);
+  let grid1 = new SyncConwayAutomata(testData.length, testData.width);
   grid1.initializeGrid(testData.grid);
   grid1.evolve();
 
