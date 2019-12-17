@@ -20,14 +20,14 @@ const updatedTestData = {
   ]
 }
 
-test('Grid Initilization', () => {
+test('SyncConwayAutomata Initilization', () => {
   let grid1 = new SyncConwayAutomata(testData.length, testData.width);
   grid1.initializeGrid(testData.grid);
 
   expect(grid1.mapToStateArray()).toEqual(testData.grid);
 });
 
-test('Grid Equality', () => {
+test('SyncConwayAutomata Equality', () => {
   let grid1 = new SyncConwayAutomata(testData.length, testData.width);
   let grid2 = new SyncConwayAutomata(testData.length, testData.width);
   grid1.initializeGrid(testData.grid);
@@ -37,7 +37,7 @@ test('Grid Equality', () => {
   expect(JSON.stringify(grid1.mapToStateArray())).toEqual(JSON.stringify(grid2.mapToStateArray()));
 });
 
-test('Grid Updates', () => {
+test('SyncConwayAutomata Updates', () => {
   let grid1 = new SyncConwayAutomata(testData.length, testData.width);
   grid1.initializeGrid(testData.grid);
   grid1.evolve();
