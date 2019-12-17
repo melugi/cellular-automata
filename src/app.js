@@ -17,7 +17,7 @@ app.get('/grid', function (request, response) {
   grid.initializeGrid();
 
   response.json({
-    'grid': grid.htmlify(),
+    'grid': grid.toHtml(),
     'stable': false
   });
 });
@@ -29,7 +29,7 @@ app.get('/grid/step', function (request, response) {
   let stable = JSON.stringify(grid.mapToStateArray()) === JSON.stringify(oldGrid);
 
   response.json({
-    'grid': grid.htmlify(),
+    'grid': grid.toHtml(),
     'stable': stable
   });
 });
