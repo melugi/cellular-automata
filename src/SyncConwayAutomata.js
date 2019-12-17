@@ -157,7 +157,7 @@ export default class SyncConwayAutomata {
     return neighbors;
   }
 
-  htmlify () {
+  toHtml () {
     let html = '';
     let grid = this.cells;
 
