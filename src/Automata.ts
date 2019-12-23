@@ -26,8 +26,10 @@ export default class Automata {
   /**
   * Initializes the grid as a two dimensional array of cells with an initial
   * state that's randomly generated.
+  *
+  * @param {Array} initialState
   */
-  initializeGrid(): void {
+  initializeGrid(initialState): void {
     let cells = [];
 
     for (let y = 0; y < this.length; y++) {
