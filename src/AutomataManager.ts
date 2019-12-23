@@ -19,7 +19,7 @@ export default class AutomataManager {
   revert () {
     if (!this.history.length) {
       throw new Error(`
-        There is no previous state for this automata.
+        revert Error: No history.
       `);
     }
 
@@ -27,6 +27,12 @@ export default class AutomataManager {
   }
 
   isStable (): boolean {
+    if (!this.history.length) {
+      throw new Error (`
+        isStable Check Error: No history.
+      `)
+    }
+
     let previousGrid = this.history.pop();
     let isStable = JSON.stringify(this.automata.mapToStateArray()) === JSON.stringify(previousGrid.mapToStateArray())
 
