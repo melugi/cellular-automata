@@ -39,7 +39,9 @@ function stepForward() {
 
 // TODO: Implement stepBackward once game state being saved is done.
 function stepBackward() {
-
+  $.get('/grid/back', function (data) {
+    updateGrid(data);
+  });
 }
 
 function reset () {
@@ -49,6 +51,7 @@ function reset () {
 
 $(document).ready(function () {
   $("#stepForwardBtn").click(stepForward);
+  $("#stepBackwardBtn").click(stepBackward);
   $("#playBtn").click(play);
   $("#resetBtn").click(reset);
   getGrid();
