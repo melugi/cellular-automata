@@ -1,9 +1,9 @@
 import Cell from './Cell';
 
 export default class Automata {
-  width: number;
-  length: number;
-  cells: Cell[][];
+  protected width: number;
+  protected length: number;
+  protected cells: Cell[][];
 
   /**
   * @param {int} width
