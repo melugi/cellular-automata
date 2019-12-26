@@ -1,22 +1,27 @@
+import Automata from "./Automata";
 import SyncConwayAutomata from "./SyncConwayAutomata";
 
-export default class AutomataManager {
-  automata: SyncConwayAutomata;
-  history: SyncConwayAutomata[];
+import cloneDeep from 'lodash/cloneDeep';
 
-  initializeSyncConwayAutomata (x, y, initialState) {
+export default class AutomataManager {
+  private automata: Automata;
+  private history: Automata[];
+
+  initializeSyncConwayAutomata (x: number, y: number, initialState?: any[]) {
     this.automata = new SyncConwayAutomata(x, y);
     this.automata.initializeGrid(initialState);
 
     this.history = [];
   }
 
-  evolve () {
-    this.history.push(this.automata);
+  evolve (): void {
+    let record = cloneDeep(this.automata);
+
+    this.history.push(record);
     this.automata.evolve();
   }
 
-  revert () {
+  revert (): void {
     if (!this.history.length) {
       throw new Error(`
         revert Error: No history.
