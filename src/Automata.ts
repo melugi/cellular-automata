@@ -3,7 +3,7 @@ import Cell from './Cell';
 export default class Automata {
   protected width: number;
   protected length: number;
-  protected cells: Cell[][];
+  protected cells: Cell[][] = new Array();
 
   /**
   * @param {int} width
@@ -12,7 +12,6 @@ export default class Automata {
   constructor(width, length) {
     this.width = width;
     this.length = length;
-    this.cells = [];
   }
 
   mapToStateArray(): boolean[][] {
