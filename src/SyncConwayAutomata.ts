@@ -11,46 +11,6 @@ export default class SyncConwayAutomata extends Automata {
   }
 
   /**
-  * Initializes the grid as a two dimensional array of cells with an initial
-  * state that's randomly generated.
-  *
-  * @param {Array} initialState
-  */
-  initializeGrid (initialState?: boolean[][]): void {
-    if (initialState) {
-      if (initialState.length != this.length) {
-        throw new Error(`
-        Error initializing grid, mismatched length:
-        Given ${initialState.length}, expected ${this.length}.
-        `);
-      }
-      if (initialState[0].length != this.width) {
-        throw new Error(`
-          Error initializing grid, mismatched width:
-          Given ${initialState[0].length}, expected ${this.width}.
-          `);
-      }
-    }
-
-    let cells = [];
-
-    for (let y = 0; y < this.length; y++) {
-      let cellRow = [];
-
-      for (let x = 0; x < this.width; x++) {
-        let isCellAlive = initialState ? initialState[y][x] : (Math.random() <= 0.5);
-        let cell = new Cell(isCellAlive, x, y);
-
-        cellRow.push(cell);
-      }
-
-      cells.push(cellRow);
-    }
-
-    this.cells = cells;
-  }
-
-  /**
   * Goes through the grid and updates the state of each cell.
   */
   evolve (): void {
