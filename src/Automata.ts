@@ -29,7 +29,7 @@ export default class Automata {
   *
   * @param {Array} initialState
   */
-  initializeGrid(initialState): void {
+  initializeGrid(initialState?: any[][]): void {
     let cells = [];
 
     for (let y = 0; y < this.length; y++) {

@@ -16,7 +16,7 @@ export default class SyncConwayAutomata extends Automata {
   *
   * @param {Array} initialState
   */
-  initializeGrid (initialState): void {
+  initializeGrid (initialState?: boolean[][]): void {
     if (initialState) {
       if (initialState.length != this.length) {
         throw new Error(`
