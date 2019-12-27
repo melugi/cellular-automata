@@ -7,14 +7,14 @@ export default class AutomataManager {
   protected automata: Automata;
   protected history: Automata[] = new Array();
 
-  initializeSyncConwayAutomata (x: number, y: number, initialState?: boolean[][]) {
+  initializeSyncConwayAutomata(x: number, y: number, initialState?: boolean[][]) {
     this.automata = new SyncConwayAutomata(x, y);
     this.automata.initializeGrid(initialState);
   }
 
-  evolve (): void {
+  evolve(): void {
     if (this.history.length && this.isStable()) {
-      throw new Error (`
+      throw new Error(`
         evolve Error: Automata is already stable.
       `);
     }
@@ -25,7 +25,7 @@ export default class AutomataManager {
     this.automata.evolve();
   }
 
-  revert (): void {
+  revert(): void {
     if (!this.history.length) {
       throw new Error(`
         revert Error: No history.
@@ -35,9 +35,9 @@ export default class AutomataManager {
     this.automata = this.history.pop();
   }
 
-  isStable (): boolean {
+  isStable(): boolean {
     if (!this.history.length) {
-      throw new Error (`
+      throw new Error(`
         isStable Check Error: No history.
       `)
     }
@@ -48,7 +48,7 @@ export default class AutomataManager {
     return isStable;
   }
 
-  toHtml (): string {
+  toHtml(): string {
     return this.automata.toHtml();
   }
 }
