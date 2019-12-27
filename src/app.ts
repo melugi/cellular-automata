@@ -1,9 +1,9 @@
-import SyncConwayAutomata from "./SyncConwayAutomata";
+import AutomataManager from "./AutomataManager";
 import Express from 'express';
 import * as path from 'path';
 
 const app = Express();
-var grid;
+const manager = new AutomataManager();
 
 app.use('/public', Express.static(path.join(__dirname, '../public')));
 app.use('/jquery', Express.static(path.join(__dirname, '../node_modules/jquery/dist')));
@@ -13,24 +13,29 @@ app.get('/', function (request, response) {
 });
 
 app.get('/grid', function (request, response) {
-  grid = new SyncConwayAutomata(10, 10);
-  grid.initializeGrid();
+  manager.initializeSyncConwayAutomata(10, 10);
 
   response.json({
-    'grid': grid.toHtml(),
+    'grid': manager.toHtml(),
     'stable': false
   });
 });
 
 app.get('/grid/step', function (request, response) {
-  let oldGrid = grid.mapToStateArray();
-  grid.evolve();
-
-  let stable = JSON.stringify(grid.mapToStateArray()) === JSON.stringify(oldGrid);
+  manager.evolve();
 
   response.json({
-    'grid': grid.toHtml(),
-    'stable': stable
+    'grid': manager.toHtml(),
+    'stable': manager.isStable()
+  });
+});
+
+app.get('/grid/back', function (request, response) {
+  manager.revert();
+
+  response.json({
+    'grid': manager.toHtml(),
+    'stable': manager.isStable()
   });
 });
 

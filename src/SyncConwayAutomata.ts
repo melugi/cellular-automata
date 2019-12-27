@@ -1,26 +1,13 @@
 import Cell from "./Cell";
+import Automata from "./Automata";
 
-export default class SyncConwayAutomata {
-  width: number;
-  length: number;
-  cells: Cell[][];
-
+export default class SyncConwayAutomata extends Automata {
   /**
   * @param {int} width
   * @param {int} length
   */
   constructor (width, length) {
-    this.width = width;
-    this.length = length;
-    this.cells = [];
-  }
-
-  mapToStateArray(): boolean[][] {
-    return this.cells.map( (cellRow) => {
-      return cellRow.map( (cell) => {
-        return cell.isAlive();
-      });
-    });
+    super(length, width);
   }
 
   /**
@@ -29,7 +16,7 @@ export default class SyncConwayAutomata {
   *
   * @param {Array} initialState
   */
-  initializeGrid (initialState) {
+  initializeGrid (initialState?: boolean[][]): void {
     if (initialState) {
       if (initialState.length != this.length) {
         throw new Error(`
@@ -66,7 +53,7 @@ export default class SyncConwayAutomata {
   /**
   * Goes through the grid and updates the state of each cell.
   */
-  evolve () {
+  evolve (): void {
     let newCells = [];
     let oldCells = this.cells;
 
@@ -158,19 +145,5 @@ export default class SyncConwayAutomata {
     }
 
     return neighbors;
-  }
-
-  toHtml (): string {
-    let html = '';
-    let grid = this.cells;
-
-    grid.forEach( gridRow => {
-      gridRow.forEach( cell => {
-        let cellState = cell.isAlive() ? 'alive' : 'dead';
-        html += `<div class='${cellState} square-grid__cell square-grid__cell--${gridRow.length}'></div>`;
-      });
-    });
-
-    return html;
   }
 }
