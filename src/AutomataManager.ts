@@ -4,17 +4,21 @@ import SyncConwayAutomata from "./SyncConwayAutomata";
 import cloneDeep from 'lodash/cloneDeep';
 
 export default class AutomataManager {
-  private automata: Automata;
-  private history: Automata[];
+  protected automata: Automata;
+  protected history: Automata[] = new Array();
 
-  initializeSyncConwayAutomata (x: number, y: number, initialState?: any[]) {
+  initializeSyncConwayAutomata (x: number, y: number, initialState?: boolean[][]) {
     this.automata = new SyncConwayAutomata(x, y);
     this.automata.initializeGrid(initialState);
-
-    this.history = [];
   }
 
   evolve (): void {
+    if (this.history.length && this.isStable()) {
+      throw new Error (`
+        evolve Error: Automata is already stable.
+      `);
+    }
+
     let record = cloneDeep(this.automata);
 
     this.history.push(record);
@@ -38,7 +42,7 @@ export default class AutomataManager {
       `)
     }
 
-    let previousGrid = this.history.pop();
+    let previousGrid = this.history.slice(-1)[0];
     let isStable = JSON.stringify(this.automata.mapToStateArray()) === JSON.stringify(previousGrid.mapToStateArray())
 
     return isStable;
