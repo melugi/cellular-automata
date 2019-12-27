@@ -52,7 +52,7 @@ export default class Automata {
   */
   evolve(): void {
     throw new Error(`
-        evolve has no been implemented. Please override and specify for an automata.
+        evolve has not been implemented. Please override and specify for an automata.
       `)
   }
 
@@ -70,7 +70,7 @@ export default class Automata {
    */
   getCellNeighbors(cell): Cell[] {
     throw new Error(`
-        getCellNeighbors has no been implemented. Please override and specify for an automata.
+        getCellNeighbors has not been implemented. Please override and specify for an automata.
       `)
   }
 
