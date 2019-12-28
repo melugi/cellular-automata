@@ -6,23 +6,23 @@ export default class SyncConwayAutomata extends Automata {
   * @param {int} width
   * @param {int} length
   */
-  constructor (width, length) {
+  constructor(width, length) {
     super(length, width);
   }
 
   /**
   * Goes through the grid and updates the state of each cell.
   */
-  evolve (): void {
+  evolve(): void {
     let newCells = [];
     let oldCells = this.cells;
 
-    oldCells.forEach( (cellRow, y) => {
+    oldCells.forEach((cellRow, y) => {
       let newRow = [];
-      cellRow.forEach( (cell, x) => {
+      cellRow.forEach((cell, x) => {
         let neighbors = this.getCellNeighbors(x, y);
 
-        let liveNeighbors = neighbors.filter( cell => {
+        let liveNeighbors = neighbors.filter(cell => {
           return cell.isAlive();
         });
 
@@ -60,7 +60,7 @@ export default class SyncConwayAutomata extends Automata {
    *
    * @param {Cell} cell
    */
-  getCellNeighbors (x: number, y: number): Cell[] {
+  getCellNeighbors(x: number, y: number): Cell[] {
     let neighbors = [];
 
     if (y - 1 >= 0) {

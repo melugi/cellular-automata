@@ -5,15 +5,15 @@ export default class Cell {
     this.state = state;
   }
 
-  die () {
+  die() {
     this.state = false;
   }
 
-  live () {
+  live() {
     this.state = true;
   }
 
-  isAlive (): boolean {
+  isAlive(): boolean {
     return this.state;
   }
 }
