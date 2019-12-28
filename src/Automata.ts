@@ -51,7 +51,7 @@ export default class Automata {
 
       for (let x = 0; x < this.width; x++) {
         let isCellAlive = initialState ? initialState[y][x] : (Math.random() <= 0.5);
-        let cell = new Cell(isCellAlive, x, y);
+        let cell = new Cell(isCellAlive);
 
         cellRow.push(cell);
       }
@@ -83,7 +83,7 @@ export default class Automata {
    *
    * @param {Cell} cell
    */
-  getCellNeighbors(cell): Cell[] {
+  getCellNeighbors(x: number, y: number): Cell[] {
     throw new Error(`
         getCellNeighbors has not been implemented. Please override and specify for an automata.
       `)

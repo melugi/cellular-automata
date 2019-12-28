@@ -17,10 +17,10 @@ export default class SyncConwayAutomata extends Automata {
     let newCells = [];
     let oldCells = this.cells;
 
-    oldCells.forEach( cellRow => {
+    oldCells.forEach( (cellRow, y) => {
       let newRow = [];
-      cellRow.forEach( cell => {
-        let neighbors = this.getCellNeighbors(cell);
+      cellRow.forEach( (cell, x) => {
+        let neighbors = this.getCellNeighbors(x, y);
 
         let liveNeighbors = neighbors.filter( cell => {
           return cell.isAlive();
@@ -60,10 +60,8 @@ export default class SyncConwayAutomata extends Automata {
    *
    * @param {Cell} cell
    */
-  getCellNeighbors (cell): Cell[] {
+  getCellNeighbors (x: number, y: number): Cell[] {
     let neighbors = [];
-    let x = cell.x;
-    let y = cell.y;
 
     if (y - 1 >= 0) {
       // Position 7
