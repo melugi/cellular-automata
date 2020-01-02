@@ -24,4 +24,5 @@ Clone the project and then run `npm install`. Once the dependencies are installe
 
 * [Game of Life Wiki](http://www.conwaylife.com/wiki/Main_Page)
 * [A Guided Tour of Asynchronous Cellular Automata](https://arxiv.org/abs/1406.0792)
+* [Cellular automaton models for time-correlated random walks](https://www.nature.com/articles/s41598-017-17317-x)
 
